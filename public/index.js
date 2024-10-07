@@ -1,4 +1,4 @@
-const url = "https://cusco-api.vercel.app";
+const url = "/api";
 
 async function getRecords() {
     const response = await fetch(url);
