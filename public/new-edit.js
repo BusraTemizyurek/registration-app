@@ -1,9 +1,6 @@
-const url = "https://cusco-api.vercel.app";
-
+const url = "/api";
 const urlParams = new URLSearchParams(window.location.search);
 const id = urlParams.get('id');
-console.log(id);
-
 
 function setDateToToday() {
     const date = document.getElementById("date");
@@ -76,7 +73,7 @@ async function onClickSave() {
 
     if (response.ok) {
         // redirect to main page
-        location.href = "./main-page.html"
+        location.href = "./index.html"
     } else {
         alert("Error");
     }
@@ -102,7 +99,7 @@ window.onload = async function () {
             document.getElementById("explanation").value = record.explanation;
         } else {
             alert("Data can not be updated, try again");
-            location.href = "./main-page.html";
+            location.href = "./index.html";
         }
     }
 
