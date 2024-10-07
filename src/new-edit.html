@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/4f63702bc5.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="new-edit.css">
+    <script type="application/javascript" src="utilities.js"></script>
+    <script type="application/javascript" src="new-edit.js"></script>
+</head>
+
+<body>
+    <div class="header">
+        <div><i class="fa-solid fa-user-plus fa-lg"></i></div>
+        <div>
+            <h3>New Registration</h3>
+        </div>
+    </div>
+    <div class="core">
+        <div class="input-divs">
+            <div>
+                <label for="uname">User Name</label>
+                <input type="text" id="uname" placeholder="Enter user name" required onkeyup="onInputKeyUp(event)">
+            </div>
+
+            <div>
+                <label for="date">Date</label>
+                <input type="date" onload="date()" id="date" readonly>
+            </div>
+
+            <div>
+                <label for="branch">Branch</label>
+                <input type="text" id="branch" placeholder="Enter branch" required onkeyup="onInputKeyUp(event)">
+            </div>
+
+            <div>
+                <label for="cname">Customer Name</label>
+                <input type="text" id="cname" placeholder="Enter customer name" required onkeyup="onInputKeyUp(event)">
+            </div>
+
+            <div>
+                <label for="cphone">Customer Phone Number</label>
+                <input type="number" id="cphone" placeholder="Enter customer phone number" required
+                    onkeyup="onInputKeyUp(event)">
+            </div>
+
+            <div>
+                <label for="subject">Subject</label>
+                <input type="text" id="subject" placeholder="Enter the subject" required onkeyup="onInputKeyUp(event)">
+            </div>
+
+            <div>
+                <label for="price">Price</label>
+                <input type="number" id="price" placeholder="Enter the price" required onkeyup="onInputKeyUp(event)">
+            </div>
+
+            <div>
+                <label for="explanation">Explanation</label>
+                <textarea rows="3" id="explanation" placeholder="Enter explanation..." required
+                    onkeyup="onInputKeyUp(event)"></textarea>
+            </div>
+        </div>
+
+
+        <div class="bottom-part">
+            <div class="save-button-div">
+                <i class="fa-regular fa-floppy-disk fa-sm" style="color: #fafafa;"></i>
+                <button class="save-button" type="button" onclick="onClickSave()">Save</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

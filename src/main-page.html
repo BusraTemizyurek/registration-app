@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/4f63702bc5.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="main-page.css">
+    <script type="application/javascript" src="utilities.js"></script>
+    <script type="application/javascript" src="main-page.js"></script>
+</head>
+
+<body>
+    <!--header-->
+    <div class="header">
+        <!--logo-->
+        <div class="logo-div">
+            <div><i class="fa-regular fa-handshake fa-l"></i></div>
+            <div class="logo">CusCo</div>
+        </div>
+
+
+        <!--search bar-->
+        <div class="middle-part-search">
+            <div><i class="fa-solid fa-magnifying-glass fa-xs" style="color:rgb(172, 172, 172);"></i></div>
+            <div class="search-div">
+                <input id="search-bar" class="search-bar" type="text" placeholder="Serch customers..."
+                    onkeyup="onSearchKeyUp(event)">
+            </div>
+        </div>
+
+
+        <!--plus icon-->
+        <a href="./new-edit.html" class="new-registration-button">
+            <div><i class=" fa-solid fa-user-plus"></i>
+            </div>
+            <div>Add</div>
+        </a>
+
+    </div>
+
+    <div class="header-bottom-line"></div>
+    <!--core-->
+    <div class="core">
+        <h2>Customer List</h2>
+        <table>
+            <thead>
+                <th>Name</th>
+                <th>Date</th>
+                <th>Subject</th>
+                <th>Price</th>
+                <th>Actions</th>
+            </thead>
+            <tbody id="list">
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
