@@ -1,4 +1,5 @@
-const url = "/api";
+const url = location.hostname === '' ? "https://cusco-api.vercel.app/api" : "/api";
+
 const urlParams = new URLSearchParams(window.location.search);
 const id = urlParams.get('id');
 
