@@ -31,6 +31,10 @@ app.use((req, res, next) => {
 
 app.use(express.static(path.join(__dirname, "..", 'client')));
 
+app.use('/api/user', (req, res) => {
+    res.json(req.oidc.user);
+});
+
 app.get('/api', async function (req, res) {
     try {
         const result = await sql`SELECT * FROM "customer_records";`
