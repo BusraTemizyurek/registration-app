@@ -5,17 +5,7 @@ const app = express();
 const cors = require('cors');
 const { sql } = require('@vercel/postgres');
 const { auth } = require('express-openid-connect');
-const path = require('path')
-
-const config = {
-    authRequired: true,
-    auth0Logout: true,
-    secret: process.env.AUTH_CLIENT_SECRET,
-    baseURL: process.env.VERCEL_ENV === 'production' ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : `http://localhost:3000`,
-    clientID: process.env.AUTH_CLIENT_ID,
-    issuerBaseURL: 'https://dev-zgdxlg0x5dxejufi.eu.auth0.com'
-};
-
+const path = require('path');
 
 const port = process.env.PORT || 3000;
 
@@ -24,8 +14,20 @@ app.use(cors());
 
 app.use(express.json());
 
-// auth router attaches /login, /logout, and /callback routes to the baseURL
-app.use(auth(config));
+function getBaseUrl(hostname) {
+    return hostname === 'localhost' ? `http://localhost:${port}` : `https://${hostname}`;
+}
+
+app.use((req, res, next) => {
+    return auth({
+        authRequired: true,
+        auth0Logout: true,
+        secret: process.env.AUTH_CLIENT_SECRET,
+        baseURL: getBaseUrl(req.hostname),
+        clientID: process.env.AUTH_CLIENT_ID,
+        issuerBaseURL: process.env.AUTH_ISSUER_BASE_URL,
+    })(req, res, next);
+});
 
 app.use(express.static(path.join(__dirname, "..", 'client')));
 
