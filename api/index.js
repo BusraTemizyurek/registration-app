@@ -29,10 +29,6 @@ app.use(auth(config));
 
 app.use(express.static(path.join(__dirname, "..", 'client')));
 
-app.get('/info', (req, res) => {
-    res.json(process.env);
-});
-
 app.get('/api', async function (req, res) {
     try {
         const result = await sql`SELECT * FROM "customer_records";`
