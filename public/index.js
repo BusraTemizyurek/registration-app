@@ -1,3 +1,8 @@
+document.documentElement.setAttribute('data-bs-theme', (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+    document.documentElement.setAttribute('data-bs-theme', (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+})
 const url = location.hostname === '' ? "https://cusco-api.vercel.app/api" : "/api";
 
 async function getRecords() {
