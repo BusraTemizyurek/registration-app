@@ -4,6 +4,8 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const { sql } = require('@vercel/postgres');
+const { auth } = require('express-openid-connect');
+const path = require('path');
 
 const port = process.env.PORT || 3000;
 
@@ -12,7 +14,22 @@ app.use(cors());
 
 app.use(express.json());
 
-app.use(express.static('public'));
+function getBaseUrl(hostname) {
+    return hostname === 'localhost' ? `http://localhost:${port}` : `https://${hostname}`;
+}
+
+app.use((req, res, next) => {
+    return auth({
+        authRequired: true,
+        auth0Logout: true,
+        secret: process.env.AUTH_CLIENT_SECRET,
+        baseURL: getBaseUrl(req.hostname),
+        clientID: process.env.AUTH_CLIENT_ID,
+        issuerBaseURL: process.env.AUTH_ISSUER_BASE_URL,
+    })(req, res, next);
+});
+
+app.use(express.static(path.join(__dirname, "..", 'client')));
 
 app.get('/api', async function (req, res) {
     try {
@@ -27,7 +44,7 @@ app.get('/api/:id', async function (req, res) {
     const { id } = req.params;
     try {
         const result = await sql`SELECT * FROM "customer_records" WHERE id=${id};`
-        if(result.rows.length === 0) {
+        if (result.rows.length === 0) {
             return res.status(404).send();
         }
         return res.json(result.rows[0]);
