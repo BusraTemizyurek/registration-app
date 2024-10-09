@@ -18,7 +18,9 @@ body {
     height: 60px;
     padding-left: 20px;
     padding-right: 20px;
+    padding-bottom: 15px;
     padding-top: 15px;
+    background-color: #201f1f;
 }
 
 .header-bottom-line {
@@ -31,7 +33,7 @@ body {
 .core {
     margin-left: 20px;
     margin-right: 20px;
-    margin-top: unset;
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
@@ -55,8 +57,8 @@ tr {
 
 th {
     text-align: start;
-    color: rgb(88, 86, 86);
-    font-size: 15px;
+    color: rgb(200 208 220);
+    font-size: 16px;
 }
 
 .date-column {
@@ -93,7 +95,7 @@ button:hover {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    background-color: black;
+    background-color: #323a4f;
     color: whitesmoke;
     text-wrap: nowrap;
     gap: 5px;
