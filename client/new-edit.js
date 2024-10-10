@@ -58,7 +58,6 @@ async function onClickSave() {
         return;
     }
 
-    const user = document.getElementById("uname").value;
     const branch = document.getElementById("branch").value;
     const customer = document.getElementById("cname").value;
     const phone_number = document.getElementById("cphone").value;
@@ -68,7 +67,6 @@ async function onClickSave() {
 
     const record = {
         customer,
-        user,
         date: (new Date()).toISOString(),
         branch,
         subject,

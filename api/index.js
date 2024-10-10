@@ -58,7 +58,8 @@ app.get('/api/:id', async function (req, res) {
 });
 app.put('/api/:id', async (req, res) => {
     const { id } = req.params;
-    const { customer, user, date, branch, subject, price, explanation, phone_number } = req.body;
+    const { customer, date, branch, subject, price, explanation, phone_number } = req.body;
+    const user = req.oidc.user.name;
     try {
         const result = await sql`
             UPDATE "customer_records"
@@ -76,7 +77,8 @@ app.put('/api/:id', async (req, res) => {
 });
 
 app.post('/api', async (req, res) => {
-    const { customer, user, date, branch, subject, price, explanation, phone_number } = req.body;
+    const { customer, date, branch, subject, price, explanation, phone_number } = req.body;
+    const user = req.oidc.user.name;
     try {
 
         await sql`INSERT INTO "customer_records" ("customer", "user", "date", "branch", "subject", "price", "explanation", "phone_number")
