@@ -26,12 +26,12 @@
         <div class="input-divs">
             <div>
                 <label for="uname">User Name</label>
-                <input type="text" id="uname" placeholder="Enter user name" required onkeyup="onInputKeyUp(event)">
+                <input type="text" id="uname" readonly>
             </div>
 
             <div>
                 <label for="date">Date</label>
-                <input type="date" onload="date()" id="date" readonly>
+                <input type="date" id="date" readonly>
             </div>
 
             <div>
@@ -67,13 +67,13 @@
             </div>
         </div>
 
-
         <div class="bottom-part">
-            <div class="save-button-div">
+            <button class="save-button" type="button" onclick="onClickSave()">
                 <i class="fa-regular fa-floppy-disk fa-sm" style="color: #fafafa;"></i>
-                <button class="save-button" type="button" onclick="onClickSave()">Save</button>
-            </div>
+                <div>Save</div>
+            </button>
         </div>
+
     </div>
 
 </body>

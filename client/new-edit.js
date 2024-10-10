@@ -3,10 +3,17 @@ document.documentElement.setAttribute('data-bs-theme', (window.matchMedia('(pref
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
     document.documentElement.setAttribute('data-bs-theme', (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
 })
-const url = location.hostname === '' ? "https://cusco-api.vercel.app/api" : "/api";
+const url = "/api";
 
 const urlParams = new URLSearchParams(window.location.search);
 const id = urlParams.get('id');
+
+async function getUser() {
+    const response = await fetch(`${url}/user`);
+    const user = await response.json();
+
+    return user;
+}
 
 function setDateToToday() {
     const date = document.getElementById("date");
@@ -33,6 +40,7 @@ async function getRecords() {
 const allRecords = getRecords();
 
 async function onClickSave() {
+
     const inputs = [
         ...document.getElementsByTagName("input"),
         ...document.getElementsByTagName("textarea")
@@ -87,9 +95,8 @@ async function onClickSave() {
 }
 
 window.onload = async function () {
-
     if (id) {
-        response = await fetch(`${url}/${id}`, {
+        const response = await fetch(`${url}/${id}`, {
             method: "GET"
         })
 
@@ -107,6 +114,9 @@ window.onload = async function () {
             alert("Data can not be updated, try again");
             location.href = "./index.html";
         }
+    } else {
+        const userInfo = await getUser();
+        document.getElementById("uname").value = userInfo.name;
     }
 
     setDateToToday();

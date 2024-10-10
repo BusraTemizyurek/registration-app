@@ -3,7 +3,7 @@ document.documentElement.setAttribute('data-bs-theme', (window.matchMedia('(pref
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
     document.documentElement.setAttribute('data-bs-theme', (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
 })
-const url = location.hostname === '' ? "https://cusco-api.vercel.app/api" : "/api";
+const url = "/api";
 
 async function getRecords() {
     const response = await fetch(url);
@@ -13,15 +13,29 @@ async function getRecords() {
 }
 const records = getRecords();
 
+async function getUser() {
+    const response = await fetch(`${url}/user`);
+    const user = await response.json();
+
+    return user;
+}
+
 function createRow(record) {
     const row = document.createElement("tr");
 
-    const name = document.createElement("td");
-    name.innerText = record.customer;
+    const uname = document.createElement("td");
+    uname.innerText = record.user;
+
+    const cname = document.createElement("td");
+    cname.innerText = record.customer;
 
     const date = document.createElement("td");
     date.innerText = formatDate(new Date(record.date));
     date.classList.add("date-column");
+
+    const time = document.createElement("td");
+    time.innerText = formatTime(new Date(record.date));
+    time.classList.add("date-column");
 
     const subject = document.createElement("td");
     subject.innerText = record.subject;
@@ -32,19 +46,24 @@ function createRow(record) {
     const actions = document.createElement("td");
 
     const deleteButton = document.createElement("button");
-    deleteButton.innerHTML = '<i class="fa-solid fa-trash" style="color: #353536;"></i>';
+    deleteButton.innerHTML = '<i class="fa-solid fa-trash"></i>';
     deleteButton.classList.add("delete-button");
     deleteButton.onclick = createOnClick(record.id, row, deleteButton);
 
     const editLink = document.createElement("a");
-    editLink.innerHTML = '<i class="fa-solid fa-pen" style="color: #4c4c4d;"></i>';
+    editLink.innerHTML = '<i class="fa-solid fa-pen"></i>';
     editLink.href = `new-edit.html?id=${record.id}`
 
     actions.append(editLink, deleteButton);
 
-    row.append(name, date, subject, price, actions);
+    row.append(date, time, uname, cname, subject, price, actions);
 
     return row;
+}
+
+function onDropDownClick() {
+    const dropDownDiv = document.getElementById("dropdown-body");
+    dropDownDiv.classList.toggle("hide");
 }
 
 function createOnClick(id, row, button) {
@@ -104,6 +123,10 @@ function hasSearchInRecord(record, search) {
 
 window.onpageshow = async function () {
     const search = document.getElementById("search-bar").value;
-    console.log("search.val:", search);
-    printList(search.toLowerCase());
+    await printList(search.toLowerCase());
+
+    const user = await getUser();
+
+    const img = document.getElementById("image");
+    img.src = user.picture;
 }

@@ -69,30 +69,26 @@ textarea {
     padding: 5px;
     width: 100%;
     box-sizing: border-box;
+    background-color: unset;
 }
 
 textarea:focus {
     outline: none;
 }
 
-.save-button-div {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    background-color: rgb(19, 17, 17);
-    padding: 10px;
-    border-radius: 5px;
-}
-
 .save-button {
     border: unset;
-    /* display: flex;
-    flex-direction: row; */
-    background-color: unset;
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
     border: unset;
-    color: whitesmoke;
     font-weight: bold;
+    align-items: center;
+    background-color: var(--bs-dark);
+    color: white;
+    box-shadow: 1px 1px 1px 3px var(--bs-secondary-bg-subtle);
+    padding: 10px 20px;
+    border-radius: 5px;
 }
 
 .bottom-part {

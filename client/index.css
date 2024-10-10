@@ -10,6 +10,7 @@ body {
 }
 
 .header {
+    position: relative;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -18,16 +19,16 @@ body {
     height: 60px;
     padding-left: 20px;
     padding-right: 20px;
-    padding-bottom: 15px;
-    padding-top: 15px;
-    background-color: #201f1f;
+    /* background-color: #c7c7cc53; */
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .header-bottom-line {
     width: 100%;
     height: 1px;
     background-color: rgb(207, 205, 205);
-    margin-top: 20px;
+
 }
 
 .core {
@@ -57,7 +58,7 @@ tr {
 
 th {
     text-align: start;
-    color: rgb(200 208 220);
+    /* color: rgb(76 81 87); */
     font-size: 16px;
 }
 
@@ -71,23 +72,17 @@ th {
     background-color: unset;
 }
 
+
 button:hover {
     cursor: pointer;
 }
 
 .logo {
-    color: black;
+    /* color: black; */
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: bold;
     font-style: oblique;
-    font-size: 20px;
-}
-
-.logo-div {
-    display: flex;
-    flex-direction: row;
-    gap: 8px;
-    align-items: center;
+    font-size: 27px;
 }
 
 .new-registration-button {
@@ -95,14 +90,18 @@ button:hover {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    background-color: #323a4f;
     color: whitesmoke;
     text-wrap: nowrap;
     gap: 5px;
-    border: unset;
-    padding: 5px;
-    border-radius: 5px;
     text-decoration: unset;
+    margin-right: 20px;
+    border: unset;
+    font-weight: bold;
+    border: unset;
+    background-color: var(--bs-gray-800);
+    box-shadow: 1px 1px 1px 3px var(--bs-secondary-bg-subtle);
+    padding: 8px 20px;
+    border-radius: 8px;
 }
 
 .search-bar {
@@ -124,17 +123,38 @@ button:hover {
     align-items: center;
     border: 1px solid rgb(207, 205, 205);
     border-radius: 10px;
-    padding: 10px;
+    padding: 6px;
     flex-grow: 1;
     /* max-width: 40%; */
 }
 
-.search-button {
-    background: rgba(201, 201, 201, 0.627);
-    border: 1px solid gray;
-    border-radius: 20px;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: unset;
-    padding-bottom: unset;
+.user-info {
+    display: flex;
+    position: relative;
+}
+
+.user-img {
+    width: 42px;
+    border-radius: 25px;
+    box-shadow: 1px 1px 1px 1px var(--bs-light-bg-subtle);
+    border: 1px solid var(--bs-dark-border-subtle);
+}
+
+.show {
+    display: block;
+}
+
+.dropdown-div {
+    position: absolute;
+    background-color: var(--bs-secondary-bg);
+    padding: 8px 16px;
+    border-radius: 5px;
+    text-wrap: nowrap;
+    top: 45px;
+    right: 0;
+    box-shadow: 5px 5px 10px 8px var(--bs-secondary-bg-subtle);
+}
+
+.hide {
+    display: none;
 }

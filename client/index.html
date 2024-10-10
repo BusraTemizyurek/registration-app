@@ -19,11 +19,7 @@
     <!--header-->
     <div class="header">
         <!--logo-->
-        <div class="logo-div">
-            <div><i class="fa-regular fa-handshake fa-l"></i></div>
-            <div class="logo">CusCo</div>
-        </div>
-
+        <div class="logo">CusCo</div>
 
         <!--search bar-->
         <div class="middle-part-search">
@@ -34,7 +30,6 @@
             </div>
         </div>
 
-
         <!--plus icon-->
         <a href="./new-edit.html" class="new-registration-button">
             <div><i class=" fa-solid fa-user-plus fa-sm"></i>
@@ -42,16 +37,29 @@
             <div>Add</div>
         </a>
 
+        <!--user info-->
+        <div class="user-info">
+            <img onclick="onDropDownClick()" id="image" class="user-img">
+            <!--drop down-->
+            <div id="dropdown-body" class="dropdown-div hide">
+                <a href="/logout">Sign out</a>
+            </div>
+        </div>
+
+
+
     </div>
 
     <div class="header-bottom-line"></div>
     <!--core-->
     <div class="core">
-        <h2>Customer List</h2>
+        <h3>Customer List</h3>
         <table>
             <thead>
-                <th>Name</th>
                 <th>Date</th>
+                <th>Time</th>
+                <th>User Name</th>
+                <th>Customer Name</th>
                 <th>Subject</th>
                 <th>Price</th>
                 <th>Actions</th>
