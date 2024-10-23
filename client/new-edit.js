@@ -30,6 +30,20 @@ function onInputKeyUp(event) {
     }
 }
 
+function onInputBlur(event) {
+    const input = event.target;
+    if (input.value === '') {
+        input.classList.add('highlight');
+    }
+    else if ((new Date(input.value)) >= (new Date())) {
+        input.classList.add('highlight');
+        alert("Registration cannot be created for future dates");
+    }
+    else {
+        input.classList.remove('highlight');
+    }
+}
+
 async function getRecords() {
     const response = await fetch(url);
     const records = await response.json();
@@ -52,6 +66,12 @@ async function onClickSave() {
         }
     }
 
+    const date = document.getElementById("date");
+    if (date.value === '' || ((new Date(date.value)) >= (new Date()))) {
+        document.getElementById("date").classList.add('highlight');
+        return;
+    }
+
     const highlightedInputs = document.getElementsByClassName("highlight");
     if (highlightedInputs.length > 0) {
         highlightedInputs[0].focus();
@@ -64,10 +84,12 @@ async function onClickSave() {
     const subject = document.getElementById("subject").value;
     const price = document.getElementById("price").value;
     const explanation = document.getElementById("explanation").value;
+    date = document.getElementById("date").value;
+
 
     const record = {
         customer,
-        date: (new Date()).toISOString(),
+        date: (new Date(date)).toISOString(),
         branch,
         subject,
         price,
@@ -100,7 +122,7 @@ window.onload = async function () {
 
         if (response.ok) {
             const record = await response.json();
-            console.log(record)
+            //console.log(record)
             document.getElementById("uname").value = record.user;
             document.getElementById("branch").value = record.branch;
             document.getElementById("cname").value = record.customer;

@@ -14,7 +14,7 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    gap: 15px;
+    gap: 10px;
     align-items: center;
     height: 60px;
     padding-left: 20px;
@@ -94,14 +94,14 @@ button:hover {
     text-wrap: nowrap;
     gap: 5px;
     text-decoration: unset;
-    margin-right: 20px;
+    margin-right: 10px;
     border: unset;
     font-weight: bold;
     border: unset;
-    background-color: var(--bs-gray-800);
+    background-color: var(--bs-gray-700);
     box-shadow: 1px 1px 1px 3px var(--bs-secondary-bg-subtle);
-    padding: 8px 20px;
-    border-radius: 8px;
+    padding: 6px 12px;
+    border-radius: 12px;
 }
 
 .search-bar {
