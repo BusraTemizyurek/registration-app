@@ -38,6 +38,9 @@ function onInputBlur(event) {
     else if ((new Date(input.value)) >= (new Date())) {
         input.classList.add('highlight');
         alert("Registration cannot be created for future dates");
+    } else if ((new Date(date.value)) < (new Date("2000-01-01"))) {
+        input.classList.add('highlight');
+        alert("Registration cannot be created for dates before 2000s");
     }
     else {
         input.classList.remove('highlight');
@@ -67,7 +70,7 @@ async function onClickSave() {
     }
 
     const date = document.getElementById("date");
-    if (date.value === '' || ((new Date(date.value)) >= (new Date()))) {
+    if (date.value === '' || ((new Date(date.value)) >= (new Date())) || ((new Date(date.value)) < (new Date("2000-01-01")))) {
         document.getElementById("date").classList.add('highlight');
         return;
     }
