@@ -30,20 +30,50 @@ function onInputKeyUp(event) {
     }
 }
 
-function onInputBlur(event) {
+function onPhoneInputBlur(event) {
+    const customerNumber = document.getElementById("cphone");
+    if (customerNumber.value.length !== 10) {
+        customerNumber.classList.add('highlight');
+        const warning = document.getElementById("cphone-warning");
+        warning.classList.remove("hide");
+        warning.innerText = "Please enter your 10 digit phone number";
+    } else {
+        customerNumber.classList.remove('highlight');
+        const warning = document.getElementById("cphone-warning");
+        warning.classList.remove("hide");
+        warning.innerText = "";
+    }
+}
+
+function onKeyDownCphone(event) {
+    const zeroCode = "0".charCodeAt(0);
+    const nineCode = "9".charCodeAt(0);
+    if (event.key.charCodeAt(0) > nineCode || event.key.charCodeAt(0) < zeroCode) {
+        event.preventDefault();
+    }
+}
+
+function onDateInputBlur(event) {
     const input = event.target;
     if (input.value === '') {
         input.classList.add('highlight');
     }
     else if ((new Date(input.value)) >= (new Date())) {
         input.classList.add('highlight');
-        alert("Registration cannot be created for future dates");
+        const warning = document.getElementById("date-warning");
+        warning.classList.remove("hide");
+        warning.innerText = "Registration cannot be created for the future dates";
     } else if ((new Date(date.value)) < (new Date("2000-01-01"))) {
         input.classList.add('highlight');
-        alert("Registration cannot be created for dates before 2000s");
+        const warning = document.getElementById("date-warning");
+        warning.classList.remove("hide");
+        warning.innerText = "Registration cannot be created for the dates before 2000s";
     }
     else {
         input.classList.remove('highlight');
+        const warning = document.getElementById("date-warning");
+        warning.classList.add("hide");
+        warning.innerText = "";
     }
 }
 
